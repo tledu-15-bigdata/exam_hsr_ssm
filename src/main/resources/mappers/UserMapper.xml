@@ -2,6 +2,26 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
+<mapper namespace="top.colayy.dao.UserDao">
+
+<!--    用户登录-->
+    <select id="quseryUserLogin" parameterType="User" resultType="User" >
+        select * from e_user where u_acc = #{uAcc} and u_pwd = #{uPwd}
+    </select>
+    
+<!--    验证用户是否存在-->
+    <select id="verifyUserIsexist" parameterType="User" resultType="User">
+        select * from e_user where u_acc = #{uAcc} and u_name = #{uName}
+    </select>
+
+<!--    添加用户-->
+    <insert id="siginUser" parameterType="User">
+        insert into e_user values (#{uId},#{uAcc},#{uName},#{uPwd},#{uPhoto},#{createTime},0,0,0)
+    </insert>
+
+<!--    修改用户信息、修改密码-->
+    <update id="changeUserMsg" parameterType="User">
+        update e_user set
+    </update>
 
 </mapper>

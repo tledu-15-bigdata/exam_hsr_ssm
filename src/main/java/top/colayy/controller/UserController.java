@@ -14,6 +14,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //登录
     @RequestMapping("/login")
     @ResponseBody
     public User login(@RequestBody User user){
@@ -21,6 +22,7 @@ public class UserController {
         return userlogin;
     }
 
+    //注册
     @RequestMapping("/sigin")
     @ResponseBody
     public boolean sigin(@RequestBody User user){
@@ -28,6 +30,7 @@ public class UserController {
         return mark;
     }
 
+    //修改用户信息修改密码
     @RequestMapping("/changeUserMsg")
     @ResponseBody
     public boolean changeUserMsg(@RequestBody User user){

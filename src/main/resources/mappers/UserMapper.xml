@@ -6,12 +6,12 @@
 
 <!--    用户登录-->
     <select id="quseryUserLogin" parameterType="User" resultType="User" >
-        select * from e_user where u_acc = #{uAcc} and u_pwd = #{uPwd}
+        select * from e_user where u_acc = #{uAcc} and u_pwd = #{uPwd} and is_delete = 0 and is_disabled = 0
     </select>
     
 <!--    验证用户是否存在-->
     <select id="verifyUserIsexist" parameterType="User" resultType="User">
-        select * from e_user where u_acc = #{uAcc} and u_name = #{uName}
+        select * from e_user where u_acc = #{uAcc} or u_name = #{uName}
     </select>
 
 <!--    添加用户-->
@@ -21,7 +21,22 @@
 
 <!--    修改用户信息、修改密码-->
     <update id="changeUserMsg" parameterType="User">
-        update e_user set
+        update e_user
+        <set>
+            <if test="uAcc != null and uAcc != ''">
+                u_acc = #{uAcc},
+            </if>
+            <if test="uName != null and uName != ''">
+                u_name = #{uName},
+            </if>
+            <if test="uPwd != null and uPwd != ''">
+                u_pwd = #{uPwd},
+            </if>
+            <if test="uPhoto != null and uPhoto != ''">
+                u_photo = #{uPhoto},
+            </if>
+        </set>
+        where u_id=#{uId}
     </update>
 
 </mapper>

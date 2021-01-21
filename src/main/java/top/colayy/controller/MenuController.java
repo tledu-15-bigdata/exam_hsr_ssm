@@ -11,6 +11,7 @@ import java.util.List;
 @Controller
 public class MenuController {
 
+
     @RequestMapping("/showMenu")
     @ResponseBody
     //查看菜单

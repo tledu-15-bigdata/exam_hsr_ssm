@@ -11,7 +11,7 @@
     
 <!--    验证用户是否存在-->
     <select id="verifyUserIsexist" parameterType="User" resultType="User">
-        select * from e_user where u_acc = #{uAcc} or u_name = #{uName}
+        select * from e_user where u_acc = #{uAcc}
     </select>
 
 <!--    添加用户-->

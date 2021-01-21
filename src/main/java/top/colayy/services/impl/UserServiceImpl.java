@@ -1,6 +1,7 @@
 package top.colayy.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import top.colayy.dao.UserDao;
 import top.colayy.pojo.User;
 import top.colayy.services.UserService;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public boolean sigin(User user) {
         //验证uName和uAcc是否存在
         User user1 = userDao.verifyUserIsexist(user);
-        if (user1.getuAcc()==null){
+        if (user1==null){
             //生成时间
             Date date = new Date();
             String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
@@ -50,7 +52,7 @@ public class UserServiceImpl implements UserService {
     public boolean changeUserMsg(User user) {
         //验证uName和uAcc是否存在
         User user1 = userDao.verifyUserIsexist(user);
-        if (user1.getuAcc()==null){
+        if (user1==null){
             //生成时间
             Date date = new Date();
             String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);

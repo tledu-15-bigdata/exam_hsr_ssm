@@ -12,13 +12,13 @@ import top.colayy.services.UserService;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    UserService userServiceImpl;
 
     //登录
     @RequestMapping("/login")
     @ResponseBody
     public User login(@RequestBody User user){
-        User userlogin = userService.login(user);
+        User userlogin = userServiceImpl.login(user);
         return userlogin;
     }
 
@@ -26,7 +26,7 @@ public class UserController {
     @RequestMapping("/sigin")
     @ResponseBody
     public boolean sigin(@RequestBody User user){
-        boolean mark = userService.sigin(user);
+        boolean mark = userServiceImpl.sigin(user);
         return mark;
     }
 
@@ -34,7 +34,7 @@ public class UserController {
     @RequestMapping("/changeUserMsg")
     @ResponseBody
     public boolean changeUserMsg(@RequestBody User user){
-        boolean mark = userService.changeUserMsg(user);
+        boolean mark = userServiceImpl.changeUserMsg(user);
         return mark;
     }
 }

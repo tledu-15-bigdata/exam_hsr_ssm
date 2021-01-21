@@ -2,6 +2,21 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.colayy.pojo.Menu">
+<mapper namespace="top.colayy.dao.MenuDao">
+
+<!--    查看菜单-->
+    <select id="queryShowMenu" parameterType="Menu" resultType="Menu">
+        select * from e_menu where is_root = #{isRoot}
+    </select>
+
+<!--    修改菜单内容-->
+    <update id="changeMenuCon" parameterType="Menu">
+        update e_menu set m_con = #{mCon} , create_time = #{createTime} where m_id = #{mId}
+    </update>
+
+<!--    菜单禁用-->
+    <update id="changeMenuStatus" parameterType="Menu">
+        update e_menu set is_delete = 1 , create_time = #{createTime} where m_id = #{mId}
+    </update>
 
 </mapper>

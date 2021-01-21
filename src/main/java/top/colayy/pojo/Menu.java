@@ -3,30 +3,36 @@ package top.colayy.pojo;
 public class Menu {
 
     private String mId;             //主键列
-    private String mCom;            //菜单内容
+    private String mCon;            //菜单内容
     private String mClass;          //菜单的class
     private String mLeader;         //上级菜单
     private String createTime;      //添加修改时间
+    private int isDelete;           //禁用
+    private int isRoot;             //管理员
 
     public Menu() {
     }
 
-    public Menu(String mId, String mCom, String mClass, String mLeader, String createTime) {
+    public Menu(String mId, String mCon, String mClass, String mLeader, String createTime, int isDelete, int isRoot) {
         this.mId = mId;
-        this.mCom = mCom;
+        this.mCon = mCon;
         this.mClass = mClass;
         this.mLeader = mLeader;
         this.createTime = createTime;
+        this.isDelete = isDelete;
+        this.isRoot = isRoot;
     }
 
     @Override
     public String toString() {
         return "Menu{" +
                 "mId='" + mId + '\'' +
-                ", mCom='" + mCom + '\'' +
+                ", mCon='" + mCon + '\'' +
                 ", mClass='" + mClass + '\'' +
                 ", mLeader='" + mLeader + '\'' +
                 ", createTime='" + createTime + '\'' +
+                ", isDelete=" + isDelete +
+                ", isRoot=" + isRoot +
                 '}';
     }
 
@@ -38,12 +44,12 @@ public class Menu {
         this.mId = mId;
     }
 
-    public String getmCom() {
-        return mCom;
+    public String getmCon() {
+        return mCon;
     }
 
-    public void setmCom(String mCom) {
-        this.mCom = mCom;
+    public void setmCon(String mCon) {
+        this.mCon = mCon;
     }
 
     public String getmClass() {
@@ -68,5 +74,21 @@ public class Menu {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
+    }
+
+    public int getIsRoot() {
+        return isRoot;
+    }
+
+    public void setIsRoot(int isRoot) {
+        this.isRoot = isRoot;
     }
 }

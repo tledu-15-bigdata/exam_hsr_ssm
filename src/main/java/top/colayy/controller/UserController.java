@@ -18,7 +18,7 @@ public class UserController {
     @RequestMapping("/login")
     @ResponseBody
     public User login(@RequestBody User user){
-        User userlogin = userServiceImpl.login(user);
+        User userlogin = userServiceImpl.queryLogin(user);
         return userlogin;
     }
 
@@ -36,5 +36,21 @@ public class UserController {
     public boolean changeUserMsg(@RequestBody User user){
         boolean mark = userServiceImpl.changeUserMsg(user);
         return mark;
+    }
+
+    //重置密码
+    @RequestMapping("/resetPwd")
+    @ResponseBody
+    public boolean resetPwd(@RequestBody User user){
+        boolean mark = userServiceImpl.resetPwd(user);
+        return mark;
+    }
+
+    //通过UID查询用户
+    @RequestMapping("/showUserById")
+    @ResponseBody
+    public User showUserById(@RequestBody User user){
+        User userlogin = userServiceImpl.queryUserById(user);
+        return userlogin;
     }
 }

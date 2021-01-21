@@ -19,7 +19,10 @@ public class UserServiceImpl implements UserService {
     @Override
 //    登录
     public User login(User user) {
-        User userLogin = userDao.quseryUserLogin(user);
+        User userLogin = userDao.queryUserLogin(user);
+        if (userLogin==null){
+            userLogin = new User();
+        }
         return userLogin;
     }
 

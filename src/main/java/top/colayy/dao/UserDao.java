@@ -2,6 +2,8 @@ package top.colayy.dao;
 
 import top.colayy.pojo.User;
 
+import java.util.List;
+
 public interface UserDao {
 
     //用户登录
@@ -21,5 +23,11 @@ public interface UserDao {
 
     //通过uId查询用户
     public User queryUserById(User user);
+
+    //查看所用用户
+    public List<User> queryUsers();
+
+    //禁用启用用户
+    public int changeStatus(User user);
 
 }

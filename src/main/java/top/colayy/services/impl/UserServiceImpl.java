@@ -8,6 +8,8 @@ import top.colayy.services.UserService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -90,5 +92,31 @@ public class UserServiceImpl implements UserService {
     public User queryUserById(User user) {
         User user1 = userDao.queryUserById(user);
         return user1;
+    }
+
+    @Override
+    //查看所用用户
+    public List<User> queryUsers(User user) {
+        List<User> users;
+        if (user.getIsRoot()==1){
+            users = userDao.queryUsers();
+        }else {
+            users = new LinkedList<User>();
+        }
+        return users;
+    }
+
+    @Override
+    //禁用启用用户
+    public boolean changeStatus(User user) {
+        //生成时间
+        Date date = new Date();
+        String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+        user.setCreateTime(format);
+        int i = userDao.changeStatus(user);
+        if (i==1){
+            return true;
+        }
+        return false;
     }
 }

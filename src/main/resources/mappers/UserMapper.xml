@@ -52,4 +52,14 @@
         select * from e_user where u_id = #{uId}
     </select>
 
+<!--    查看所用用户-->
+    <select id="queryUsers" resultType="User">
+        select * from e_user where is_delete = 0
+    </select>
+
+<!--    禁用启用用户-->
+    <update id="changeStatus" parameterType="User">
+        update e_user set is_disabled = 1 , create_time = #{createTime} where u_id = #{uId}
+    </update>
+
 </mapper>

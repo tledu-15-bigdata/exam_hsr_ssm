@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import top.colayy.pojo.User;
 import top.colayy.services.UserService;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -52,5 +54,21 @@ public class UserController {
     public User showUserById(@RequestBody User user){
         User userlogin = userServiceImpl.queryUserById(user);
         return userlogin;
+    }
+
+    //查看所用用户
+    @RequestMapping("/showUsers")
+    @ResponseBody
+    public List<User> showUsers(@RequestBody User user){
+        List<User> users = userServiceImpl.queryUsers(user);
+        return users;
+    }
+
+    //禁用启用用户
+    @RequestMapping("/changeStatus")
+    @ResponseBody
+    public boolean changeStatus(@RequestBody User user){
+        boolean mark = userServiceImpl.changeStatus(user);
+        return mark;
     }
 }

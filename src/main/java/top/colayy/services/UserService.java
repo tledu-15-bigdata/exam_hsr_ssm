@@ -2,6 +2,8 @@ package top.colayy.services;
 
 import top.colayy.pojo.User;
 
+import java.util.List;
+
 public interface UserService {
 
     //登录
@@ -18,5 +20,11 @@ public interface UserService {
 
     //通过uId查询用户
     public User queryUserById(User user);
+
+    //查看所用用户
+    public List<User> queryUsers(User user);
+
+    //禁用启用用户
+    public boolean changeStatus(User user);
 
 }

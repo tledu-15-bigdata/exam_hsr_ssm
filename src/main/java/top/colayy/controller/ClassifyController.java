@@ -42,8 +42,8 @@ public class ClassifyController {
     public PageUtils getBlogList(@RequestBody Map<String,Object> params)throws Exception{
         System.out.println(Integer.parseInt(params.get("offset").toString()));
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()),Integer.parseInt(params.get("pageNumber").toString()));
-        List<Classify> blogList = classifyServiceImpl.queryAllClassify(params.get("uId").toString());
-        PageInfo<Classify> pageInfo = new PageInfo<>(blogList);
+        List<Classify> classifyList = classifyServiceImpl.queryAllClassify(params.get("uId").toString());
+        PageInfo<Classify> pageInfo = new PageInfo<>(classifyList);
         return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }
 }

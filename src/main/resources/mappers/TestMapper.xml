@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.colayy.dao.TestDao">
+
+
+<!--    // 试题模块 - 添加试题-->
+    <insert id="addTest" parameterType="Test">
+        insert into e_test values (#{tId},#{tTopic},#{tAnswer},#{tScore},#{tType},#{cId},#{uId},#{createTime},0);
+    </insert>
+    <insert id="addOption" parameterType="Test">
+        insert into e_option values (#{tId},#{oA},#{oB},#{oC},#{oD});
+    </insert>
+
+
+    <!--    // 试题模块 - 删除试题-->
+    <update id="delTest" parameterType="Test">
+        update e_test set is_delete = 1 where t_id = #{tId} and u_id = #{uId};
+    </update>
+
+
+<!--    // 试题模块 - 修改试题-->
+    <update id="changeTest" parameterType="Test">
+        update e_test set t_topic = #{tTopic}, t_answer = #{tAnswer}, t_score = #{tScore}, t_type = #{tType}, c_id = #{cId} where t_id = #{tId} and u_id = #{uId};
+    </update>
+    <update id="changeOption" parameterType="Test">
+        update e_option set o_a = #{oA}, o_b = #{oB}, o_c = #{oC}, o_d = #{oD} where t_id = #{tId};
+    </update>
+
+
+<!--    // 试题模块 - 显示试题 - 通过用户ID查询-->
+    <select id="showTestByUId" resultType="Test" parameterType="string">
+        select * from e_test where u_id = #{value} and is_delete = 0 order by create_time desc;
+    </select>
+
+
+    <!--    // 试题模块 - 显示试题 - 通过用户ID查询-->
+    <select id="showTestByUId" resultType="Test" parameterType="string">
+        select * from e_test where u_id = #{value} and is_delete = 0 order by create_time desc;
+    </select>
+
+
+    <!--    // 试题模块 - 显示试题 - 通过试题ID查询-->
+    <select id="showTestByTId" resultType="Test" parameterType="Test">
+        select * from e_test where u_id = #{uID} and c_id = #{cId} and is_delete = 0;
+    </select>
+
+<!--    // 试卷模块 - 显示试题 - 查询单选题的选项-->
+    <select id="showOption" parameterType="string" resultType="Test">
+        select * from e_option where t_id = #{value};
+    </select>
+
+
+<!--    // 试卷模块 - 显示试题 - 通过分类ID查询或是部分题目模糊查询-->
+<!--    <select id="showTestByCon" resultType="Test" parameterType="Test">-->
+<!--        select * from e_test-->
+<!--        <where>-->
+<!--            <if test="tId != '' and tTopic == '' and tType == ''">-->
+<!--                t_id = #{tId}-->
+<!--            </if>-->
+<!--            <if test="tId == '' and tTopic != '' and tType == ''">-->
+<!--                t_topic like #{tTopic}-->
+<!--            </if>-->
+<!--            <if test="tId == '' and tTopic == '' and tType != ''">-->
+<!--                t_type = #{tType}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        and u_id = #{uID} and is_delete = 0;-->
+<!--    </select>-->
+    <select id="showTestByCon" resultType="Test" parameterType="Test">
+        select * from e_test
+        <where>
+            <if test="tId != '' and tId != null">
+                t_id = #{tId}
+            </if>
+            <if test="tTopic == '' and tTopic != null">
+                t_topic like #{tTopic}
+            </if>
+            <if test="tType == '' and tType != null">
+                t_type = #{tType}
+            </if>
+        </where>
+        and u_id = #{uID} and is_delete = 0;
+    </select>
+</mapper>

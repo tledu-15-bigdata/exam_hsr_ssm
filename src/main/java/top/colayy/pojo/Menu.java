@@ -4,7 +4,8 @@ public class Menu {
 
     private String mId;             //主键列
     private String mCon;            //菜单内容
-    private String mClass;          //菜单的class
+    private String mPage;           //菜单的pageName
+    private int mOrder;             //菜单顺序
     private String mLeader;         //上级菜单
     private String createTime;      //添加修改时间
     private int isDelete;           //禁用
@@ -13,10 +14,11 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(String mId, String mCon, String mClass, String mLeader, String createTime, int isDelete, int isRoot) {
+    public Menu(String mId, String mCon, String mPage, int mOrder, String mLeader, String createTime, int isDelete, int isRoot) {
         this.mId = mId;
         this.mCon = mCon;
-        this.mClass = mClass;
+        this.mPage = mPage;
+        this.mOrder = mOrder;
         this.mLeader = mLeader;
         this.createTime = createTime;
         this.isDelete = isDelete;
@@ -28,7 +30,8 @@ public class Menu {
         return "Menu{" +
                 "mId='" + mId + '\'' +
                 ", mCon='" + mCon + '\'' +
-                ", mClass='" + mClass + '\'' +
+                ", mPage='" + mPage + '\'' +
+                ", mOrder=" + mOrder +
                 ", mLeader='" + mLeader + '\'' +
                 ", createTime='" + createTime + '\'' +
                 ", isDelete=" + isDelete +
@@ -52,12 +55,20 @@ public class Menu {
         this.mCon = mCon;
     }
 
-    public String getmClass() {
-        return mClass;
+    public String getmPage() {
+        return mPage;
     }
 
-    public void setmClass(String mClass) {
-        this.mClass = mClass;
+    public void setmPage(String mPage) {
+        this.mPage = mPage;
+    }
+
+    public int getmOrder() {
+        return mOrder;
+    }
+
+    public void setmOrder(int mOrder) {
+        this.mOrder = mOrder;
     }
 
     public String getmLeader() {

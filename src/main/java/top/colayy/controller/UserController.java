@@ -36,6 +36,7 @@ public class UserController {
     @RequestMapping("/changeUserMsg")
     @ResponseBody
     public boolean changeUserMsg(@RequestBody User user){
+        System.out.println(user);
         boolean mark = userServiceImpl.changeUserMsg(user);
         return mark;
     }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.colayy.dao.ClassifyDao">
+<!--    试题分类 - 添加-->
+    <insert id="addClassify" parameterType="Classify">
+        insert into e_classify values (#{cId},#{cName},#{uId},#{createTime},0);
+    </insert>
+<!--    试题分类 - 删除-->
+    <update id="delClassify" parameterType="Classify">
+        update e_classify set is_delete = 1 where u_id = #{uId} and c_id = #{cId};
+    </update>
+<!--    试题分类 - 修改名称-->
+    <update id="changeClassify" parameterType="Classify">
+        update e_classify set c_name = #{cName} where c_id = #{cId} and u_id = #{uId};
+    </update>
+<!--    试题分类 - 显示所有-->
+    <select id="showClassify" parameterType="string" resultType="Classify">
+        select * from e_classify where u_id = #{value} and is_delete = 0 order by create_time desc;
+    </select>
+</mapper>

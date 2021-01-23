@@ -63,15 +63,15 @@
         select * from e_test
         <where>
             <if test="tId != '' and tId != null">
-                t_id = #{tId}
+                and t_id = #{tId}
             </if>
-            <if test="tTopic == '' and tTopic != null">
-                t_topic like #{tTopic}
+            <if test="tTopic != '' and tTopic != null">
+                and t_topic like concat("%",#{tTopic},"%")
             </if>
-            <if test="tType == '' and tType != null">
-                t_type = #{tType}
+            <if test="tType != '' and tType != null">
+                and t_type = #{tType}
             </if>
+            and u_id = #{uID} and is_delete = 0
         </where>
-        and u_id = #{uID} and is_delete = 0
     </select>
 </mapper>

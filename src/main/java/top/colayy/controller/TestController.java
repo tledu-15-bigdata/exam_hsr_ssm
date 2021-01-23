@@ -19,7 +19,7 @@ import java.util.Map;
 public class TestController {
 
     @Autowired
-    private TestService testServiceImpl;
+    TestService testServiceImpl;
 
     // 试题模块 - 添加试题
     @RequestMapping("/addTest")
@@ -42,7 +42,7 @@ public class TestController {
     // 试题模块 - 显示试题 - 通过用户ID查询 --- bootstrapTable 分页
     @RequestMapping("/showAllTest")
     @ResponseBody
-    public PageUtils getBlogList(@RequestBody Map<String,Object> params)throws Exception{
+    public PageUtils showAllTest(@RequestBody Map<String,Object> params)throws Exception{
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()),Integer.parseInt(params.get("pageNumber").toString()));
         List<Test> testList = testServiceImpl.queryTestByUId(params.get("uId").toString());
         PageInfo<Test> pageInfo = new PageInfo<>(testList);
@@ -53,6 +53,7 @@ public class TestController {
     @RequestMapping("/showTestById")
     @ResponseBody
     public Test showTestByTId(@RequestBody Test test){
+        System.out.println(test);
         return testServiceImpl.queryTestByTId(test);
     }
 

@@ -6,17 +6,17 @@
 
 <!--    用户登录-->
     <select id="queryUserLogin" parameterType="User" resultType="User" >
-        select * from e_user where u_acc = #{uAcc} and u_pwd = #{uPwd} and is_delete = 0;
+        select * from e_user where u_acc = #{uAcc} and u_pwd = #{uPwd} and is_delete = 0
     </select>
     
 <!--    验证用户是否存在-->
     <select id="queryVerifyUserIsexist" parameterType="User" resultType="User">
-        select * from e_user where u_acc = #{uAcc};
+        select * from e_user where u_acc = #{uAcc}
     </select>
 
 <!--    添加用户-->
     <insert id="siginUser" parameterType="User">
-        insert into e_user values (#{uId},#{uAcc},#{uName},#{uPwd},#{uPhoto},#{createTime},0,0,0);
+        insert into e_user values (#{uId},#{uAcc},#{uName},#{uPwd},#{uPhoto},#{createTime},0,0,0)
     </insert>
 
 <!--    修改用户信息、修改密码-->
@@ -39,27 +39,27 @@
                 create_time = #{createTime},
             </if>
         </set>
-        where u_id=#{uId};
+        where u_id=#{uId}
     </update>
 
 <!--    重置密码-->
     <update id="resetPwd" parameterType="User">
-        update e_user set u_pwd = #{uPwd} , create_time = #{createTime} where u_id = #{uId};
+        update e_user set u_pwd = #{uPwd} , create_time = #{createTime} where u_id = #{uId}
     </update>
 
 <!--    通过uId查询用户-->
     <select id="queryUserById" parameterType="User" resultType="User">
-        select * from e_user where u_id = #{uId};
+        select * from e_user where u_id = #{uId}
     </select>
 
 <!--    查看所用用户-->
     <select id="queryUsers" resultType="User">
-        select * from e_user where is_delete = 0;
+        select * from e_user where is_delete = 0
     </select>
 
 <!--    禁用启用用户-->
     <update id="changeStatus" parameterType="User">
-        update e_user set is_disabled = 1 , create_time = #{createTime} where u_id = #{uId};
+        update e_user set is_disabled = 1 , create_time = #{createTime} where u_id = #{uId}
     </update>
 
 </mapper>

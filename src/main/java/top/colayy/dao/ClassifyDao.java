@@ -16,4 +16,10 @@ public interface ClassifyDao {
 
     // 试题分类 -- 显示所有
     List<Classify> showClassify(String uId);
+
+    // 试题分类 - 通过分类ID查询
+    Classify showClassifyById(String cId);
+
+    // 试题分类 - 显示所有，不分页
+    List<Classify> showClassifyList(String uId);
 }

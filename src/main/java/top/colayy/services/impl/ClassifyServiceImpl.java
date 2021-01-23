@@ -15,7 +15,7 @@ import java.util.UUID;
 public class ClassifyServiceImpl implements ClassifyService {
 
     @Autowired
-    private ClassifyDao classifyDao;
+    ClassifyDao classifyDao;
 
     // 试题分类 -- 添加
     @Override
@@ -51,7 +51,13 @@ public class ClassifyServiceImpl implements ClassifyService {
     // 试题分类 -- 显示所有
     @Override
     public List<Classify> queryAllClassify(String uId) {
-        System.out.println(uId);
         return classifyDao.showClassify(uId);
     }
+
+    // 试题分类 - 显示所有，不分页
+    @Override
+    public List<Classify> queryClassifyList(String uId) {
+        return classifyDao.showClassifyList(uId);
+    }
+
 }

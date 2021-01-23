@@ -13,4 +13,6 @@ public interface ClassifyService {
     boolean changeClassify(Classify classify);
     // 试题分类 -- 显示所有
     List<Classify> queryAllClassify(String uId);
+    // 试题分类 - 显示所有，不分页
+    List<Classify> queryClassifyList(String uId);
 }

@@ -64,7 +64,7 @@
 
     <!-- Mybatis setting配置-->
     <bean id="setting" class="org.apache.ibatis.session.Configuration">
-        <property name="mapUnderscoreToCamelCase" value="true"/>
+        <property name="mapUnderscoreToCamelCase" value="true"></property>
     </bean>
     <!--  Spring 接管sqlSessionFactory  -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -72,6 +72,20 @@
         <property name="mapperLocations" value="classpath:mappers/*.xml"/>
         <property name="typeAliasesPackage" value="top.colayy.pojo"/>
         <property name="configuration" ref="setting"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            offsetAsPageNum=true
+                            rowBoundsWithCount=true
+                            pageSizeZero=true
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!--因为Spring接管整个工程，对整个工程具有扫描权限，mybatis 定位mapper代理接口，

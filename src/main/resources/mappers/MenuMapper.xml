@@ -6,17 +6,17 @@
 
 <!--    查看菜单-->
     <select id="queryShowMenu" parameterType="Menu" resultType="Menu">
-        select * from e_menu where is_root = #{isRoot} order by m_order asc;
+        select * from e_menu where is_root = #{isRoot} order by m_order asc
     </select>
 
 <!--    修改菜单内容-->
     <update id="changeMenuCon" parameterType="Menu">
-        update e_menu set m_con = #{mCon} , create_time = #{createTime} where m_id = #{mId};
+        update e_menu set m_con = #{mCon} , create_time = #{createTime} where m_id = #{mId}
     </update>
 
 <!--    菜单禁用-->
     <update id="changeMenuStatus" parameterType="Menu">
-        update e_menu set is_delete = 1 , create_time = #{createTime} where m_id = #{mId};
+        update e_menu set is_delete = 1 , create_time = #{createTime} where m_id = #{mId}
     </update>
 
 </mapper>

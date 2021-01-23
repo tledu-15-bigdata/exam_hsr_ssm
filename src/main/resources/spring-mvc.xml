@@ -19,7 +19,7 @@
     <!--  开启注解配置  -->
     <mvc:annotation-driven/>
     <!--注解扫描-->
-    <context:component-scan base-package="top.colayy.controller"></context:component-scan>
+    <context:component-scan base-package="top.colayy.controller"/>
 
     <!--  开启静态资源访问  -->
     <mvc:default-servlet-handler/>
@@ -27,15 +27,15 @@
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
             </list>
         </property>
     </bean>
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/jsp/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/con-pages/"/>
+        <property name="suffix" value=".html"/>
     </bean>
 
 </beans>

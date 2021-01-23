@@ -23,4 +23,7 @@ public interface TestService {
 
     // 试卷模块 - 显示试题 - 通过分类ID查询或是部分题目模糊查询
     List<Test> queryTestByCon(Test test);
+
+    // 补全试卷信息 -- 添加cName,选项内容
+    List<Test> queryReplenish(List<Test> testList);
 }

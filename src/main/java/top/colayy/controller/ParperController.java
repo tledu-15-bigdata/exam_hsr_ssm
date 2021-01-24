@@ -22,4 +22,12 @@ public class ParperController {
         return mark;
     }
 
+    //删除试卷
+    @RequestMapping("/delPaper")
+    @ResponseBody
+    public boolean delPaper(@RequestBody Parper parper){
+        boolean mark = parperServiceImpl.delPaper(parper);
+        return mark;
+    }
+
 }

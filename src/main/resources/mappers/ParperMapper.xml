@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.colayy.dao.ParperDao">
+
+<!--    添加试卷-->
+    <insert id="addPaper" parameterType="Parper">
+        insert into e_parper (p_id,p_name,u_id,create_time,is_delete,p_code,p_time) values (#{pId},#{pName},#{uId},#{createTime},0,#{pCode},#{pTime})
+    </insert>
+
+<!--    删除试卷-->
+    <update id="delPaper" parameterType="Parper">
+        update e_parper set is_delete = 1 where p_id = #{pId} and u_id = #{uId}
+    </update>
+
+</mapper>

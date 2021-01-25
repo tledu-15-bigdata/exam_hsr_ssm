@@ -3,5 +3,29 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.colayy.dao.ParperTestDao">
+    
+<!--    添加试卷试题-->
+    <insert id="addPaperTest">
+        insert into e_paper_test values 
+        <foreach collection="list" item="parperTest" separator=",">
+            (#{parperTests.pId},#{parperTests.tId},#{parperTests.tType},0)
+        </foreach>
+    </insert>
+
+<!--    删除试卷试题-->
+    <update id="delPapaerTest" parameterType="ParperTest">
+        update e_paper_test set is_delete = 1 where p_id = #{pId} and t_id = #{tId}
+    </update>
+
+<!--    试卷试题展示-->
+    <select id="queryAllParperTest" parameterType="string" resultType="ParperTest">
+        select * from e_paper_test where p_id = #{pId}
+    </select>
+
+    <!--    // 试题模块 - 显示试题 - 通过试题ID查询-->
+    <select id="showTestByTId" parameterType="string" resultType="Test">
+        select * from e_test where u_id = #{uId} and t_id = #{tId} and is_delete = 0
+    </select>
+
 
 </mapper>

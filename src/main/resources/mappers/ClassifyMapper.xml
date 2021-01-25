@@ -9,11 +9,11 @@
     </insert>
 <!--    试题分类 - 删除-->
     <update id="delClassify" parameterType="Classify">
-        update e_classify set is_delete = 1 where u_id = #{uId} and c_id = #{cId}
+        update e_classify set is_delete = 1 , create_time = #{createTime} where u_id = #{uId} and c_id = #{cId}
     </update>
 <!--    试题分类 - 修改名称-->
     <update id="changeClassify" parameterType="Classify">
-        update e_classify set c_name = #{cName} where c_id = #{cId} and u_id = #{uId}
+        update e_classify set c_name = #{cName} , create_time = #{createTime} where c_id = #{cId} and u_id = #{uId}
     </update>
 <!--    试题分类 - 显示所有-->
     <select id="showClassify" parameterType="string" resultType="Classify">

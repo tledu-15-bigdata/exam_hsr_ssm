@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (user1==null){
             //生成时间
             Date date = new Date();
-            String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+            String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
             //生成ID
             String uId = UUID.randomUUID().toString();
             //默认头像
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         if (user1==null){
             //生成时间
             Date date = new Date();
-            String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+            String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
             user.setCreateTime(format);
             int i = userDao.changeUserMsg(user);
             if (i==1){
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
     public boolean resetPwd(User user) {
         //生成时间
         Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         user.setCreateTime(format);
         //重载密码
         user.setuPwd("admin123");
@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService {
     public boolean changeStatus(User user) {
         //生成时间
         Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
+        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
         user.setCreateTime(format);
         int i = userDao.changeStatus(user);
         if (i==1){

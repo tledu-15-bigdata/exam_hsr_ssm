@@ -6,23 +6,21 @@ public class Parper {
     private String pName;           //试卷名称
     private String uId;             //试卷创建者ID
     private String createTime;      //添加修改时间
-    private String startTime;       //开始时间
-    private String endTime;         //结束时间
     private String pCode;           //考试码
-    private String pTime;           //考试时长
+    private int pTime;           //考试时长
+    private int pStatus;         //试卷状态
 
     public Parper() {
     }
 
-    public Parper(String pId, String pName, String uId, String createTime, String startTime, String endTime, String pCode, String pTime) {
+    public Parper(String pId, String pName, String uId, String createTime, String pCode, int pTime, int pStatus) {
         this.pId = pId;
         this.pName = pName;
         this.uId = uId;
         this.createTime = createTime;
-        this.startTime = startTime;
-        this.endTime = endTime;
         this.pCode = pCode;
         this.pTime = pTime;
+        this.pStatus = pStatus;
     }
 
     @Override
@@ -32,10 +30,9 @@ public class Parper {
                 ", pName='" + pName + '\'' +
                 ", uId='" + uId + '\'' +
                 ", createTime='" + createTime + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
                 ", pCode='" + pCode + '\'' +
                 ", pTime='" + pTime + '\'' +
+                ", pStatus='" + pStatus + '\'' +
                 '}';
     }
 
@@ -71,22 +68,6 @@ public class Parper {
         this.createTime = createTime;
     }
 
-    public String getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
     public String getpCode() {
         return pCode;
     }
@@ -95,11 +76,19 @@ public class Parper {
         this.pCode = pCode;
     }
 
-    public String getpTime() {
+    public int getpTime() {
         return pTime;
     }
 
-    public void setpTime(String pTime) {
+    public void setpTime(int pTime) {
         this.pTime = pTime;
+    }
+
+    public int getpStatus() {
+        return pStatus;
+    }
+
+    public void setpStatus(int pStatus) {
+        this.pStatus = pStatus;
     }
 }

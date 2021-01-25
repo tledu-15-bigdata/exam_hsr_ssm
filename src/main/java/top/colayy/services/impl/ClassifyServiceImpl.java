@@ -25,7 +25,7 @@ public class ClassifyServiceImpl implements ClassifyService {
             return false;
         else{
             classify.setcId(UUID.randomUUID().toString());
-            classify.setCreateTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+            classify.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             return classifyDao.addClassify(classify) != 0;
         }
     }
@@ -35,8 +35,11 @@ public class ClassifyServiceImpl implements ClassifyService {
         if(classify.getuId() == null || "".equals(classify.getuId()) ||
             classify.getcId() == null || "".equals(classify.getcId()))
             return false;
-        else
+        else{
+            classify.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             return classifyDao.delClassify(classify) != 0;
+        }
+
     }
     // 试题分类 -- 修改名称
     @Override
@@ -45,8 +48,11 @@ public class ClassifyServiceImpl implements ClassifyService {
             classify.getcId() == null || "".equals(classify.getcId()) ||
             classify.getcName() == null || "".equals(classify.getcName()))
             return false;
-        else
+        else{
+            classify.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             return classifyDao.changeClassify(classify) != 0;
+        }
+
     }
     // 试题分类 -- 显示所有
     @Override

@@ -4,4 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.colayy.dao.RescordDao">
 
+<!--    考生信息展示-->
+    <select id="queryAllRescord" parameterType="string" resultType="Rescord">
+        select * from e_record where p_id = #{value} and is_delete = 0 order by create_time asc
+    </select>
+
 </mapper>

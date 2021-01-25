@@ -2,13 +2,80 @@ package top.colayy.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import top.colayy.dao.ClassifyDao;
 import top.colayy.dao.ParperTestDao;
+import top.colayy.dao.TestDao;
+import top.colayy.pojo.ParperTest;
+import top.colayy.pojo.Test;
 import top.colayy.services.ParperTestService;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class ParperTestServiceImpl implements ParperTestService {
 
     @Autowired
     ParperTestDao parperTestDao;
+
+    @Autowired
+    TestDao testDao;
+
+    @Autowired
+    ClassifyDao classifyDao;
+
+    //添加试卷试题
+    @Override
+    public boolean addPaperTest(List<ParperTest> parperTests) {
+        int i = parperTestDao.addPaperTest(parperTests);
+        if (i==(parperTests.size()-1)){
+            return true;
+        }
+        return false;
+    }
+
+    //删除试卷试题
+    @Override
+    public boolean delPapaerTest(ParperTest parperTest) {
+        int i = parperTestDao.delPapaerTest(parperTest);
+        if (i==1){
+            return true;
+        }
+        return false;
+    }
+
+
+    //试卷试题展示
+    @Override
+    public List<Test> queryAllParperTest(String pId) {
+        List<ParperTest> parperTests = parperTestDao.queryAllParperTest(pId);
+        List<Test> tests = new LinkedList<Test>();
+        List<Test> tests2 = new LinkedList<Test>();
+        Iterator<ParperTest> iterator = parperTests.iterator();
+        while (iterator.hasNext()){
+            ParperTest parperTest = iterator.next();
+            Test test = parperTestDao.showTestByTId(parperTest.gettId());
+            test.setcName(classifyDao.showClassifyById(test.getcId()).getcName());
+            if (test.gettType() == 0) {
+                Test testOption = testDao.showOption(test.gettId());
+                test.setoA(testOption.getoA());
+                test.setoB(testOption.getoB());
+                test.setoC(testOption.getoC());
+                test.setoD(testOption.getoD());
+            }
+            tests.add(test);
+        }
+        for (int i=0;i<tests.size();i++){
+            Test test2 = tests.get(i);
+            if (test2.gettType() == 0) tests2.add(test2);
+        }
+        for (int i=0;i<tests.size();i++){
+            Test test2 = tests.get(i);
+            if (test2.gettType() == 1) tests2.add(test2);
+        }
+        return tests2;
+    }
+
 
 }

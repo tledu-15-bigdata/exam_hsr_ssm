@@ -13,13 +13,13 @@
     </insert>
     <!--    // 试题模块 - 删除试题-->
     <update id="delTest" parameterType="Test">
-        update e_test set is_delete = 1 where t_id = #{tId} and u_id = #{uId}
+        update e_test set is_delete = 1 , create_time = #{createTime} where t_id = #{tId} and u_id = #{uId}
     </update>
 
 
 <!--    // 试题模块 - 修改试题-->
     <update id="changeTest" parameterType="Test">
-        update e_test set t_topic = #{tTopic}, t_answer = #{tAnswer}, t_score = #{tScore}, t_type = #{tType}, c_id = #{cId} where t_id = #{tId} and u_id = #{uId}
+        update e_test set t_topic = #{tTopic}, t_answer = #{tAnswer}, t_score = #{tScore}, t_type = #{tType}, c_id = #{cId} , create_time = #{createTime} where t_id = #{tId} and u_id = #{uId}
     </update>
     <update id="changeOption" parameterType="Test">
         update e_option set o_a = #{oA}, o_b = #{oB}, o_c = #{oC}, o_d = #{oD} where t_id = #{tId}

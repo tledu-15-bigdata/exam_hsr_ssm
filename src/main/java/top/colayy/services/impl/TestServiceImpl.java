@@ -25,7 +25,7 @@ public class TestServiceImpl implements TestService {
     @Override
     public boolean addTest(Test test) {
         test.settId(UUID.randomUUID().toString());
-        test.setCreateTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+        test.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         boolean mark = testDao.addTest(test) != 0;
         if(test.gettType() == 0) {
             mark = testDao.addOption(test) != 0;
@@ -36,12 +36,14 @@ public class TestServiceImpl implements TestService {
     // 试题模块 - 删除试题
     @Override
     public boolean delTest(Test test) {
+        test.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         return testDao.delTest(test) != 0;
     }
 
     // 试题模块 - 修改试题
     @Override
     public boolean changeTest(Test test) {
+        test.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         boolean mark = testDao.changeTest(test) != 0;
         if (test.gettType() == 0)
             mark = testDao.changeOption(test) != 0;

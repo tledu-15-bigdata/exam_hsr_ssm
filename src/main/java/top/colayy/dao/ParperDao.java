@@ -21,4 +21,7 @@ public interface ParperDao {
     //更改考试状态
     public int changePaperStatus(Parper parper);
 
+    //通过ID获得试卷信息
+    public Parper queryPaperById(String pId);
+
 }

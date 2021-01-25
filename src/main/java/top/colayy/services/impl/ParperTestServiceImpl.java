@@ -29,7 +29,7 @@ public class ParperTestServiceImpl implements ParperTestService {
     @Override
     public boolean addPaperTest(List<ParperTest> parperTests) {
         int i = parperTestDao.addPaperTest(parperTests);
-        if (i==(parperTests.size()-1)){
+        if (i==parperTests.size()){
             return true;
         }
         return false;
@@ -51,7 +51,6 @@ public class ParperTestServiceImpl implements ParperTestService {
     public List<Test> queryAllParperTest(String pId) {
         List<ParperTest> parperTests = parperTestDao.queryAllParperTest(pId);
         List<Test> tests = new LinkedList<Test>();
-        List<Test> tests2 = new LinkedList<Test>();
         Iterator<ParperTest> iterator = parperTests.iterator();
         while (iterator.hasNext()){
             ParperTest parperTest = iterator.next();
@@ -66,15 +65,7 @@ public class ParperTestServiceImpl implements ParperTestService {
             }
             tests.add(test);
         }
-        for (int i=0;i<tests.size();i++){
-            Test test2 = tests.get(i);
-            if (test2.gettType() == 0) tests2.add(test2);
-        }
-        for (int i=0;i<tests.size();i++){
-            Test test2 = tests.get(i);
-            if (test2.gettType() == 1) tests2.add(test2);
-        }
-        return tests2;
+        return tests;
     }
 
 

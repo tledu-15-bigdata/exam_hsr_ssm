@@ -8,7 +8,7 @@
     <insert id="addPaperTest">
         insert into e_paper_test values 
         <foreach collection="list" item="parperTest" separator=",">
-            (#{parperTests.pId},#{parperTests.tId},#{parperTests.tType},0)
+            (#{parperTest.pId},#{parperTest.tId},#{parperTest.tType},0)
         </foreach>
     </insert>
 
@@ -19,7 +19,7 @@
 
 <!--    试卷试题展示-->
     <select id="queryAllParperTest" parameterType="string" resultType="ParperTest">
-        select * from e_paper_test where p_id = #{pId}
+        select * from e_paper_test where p_id = #{pId} order by t_type asc
     </select>
 
     <!--    // 试题模块 - 显示试题 - 通过试题ID查询-->

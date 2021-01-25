@@ -21,4 +21,7 @@ public interface ParperService {
     //改变试卷状态
     public boolean changePaperStatus(Parper parper);
 
+    //通过ID获得试卷信息
+    public Parper queryPaperById(String pId);
+
 }

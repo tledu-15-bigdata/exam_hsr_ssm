@@ -6,17 +6,17 @@
 
 <!--    添加试卷-->
     <insert id="addPaper" parameterType="Parper">
-        insert into e_parper (p_id,p_name,u_id,create_time,is_delete,p_code,p_time,p_status) values (#{pId},#{pName},#{uId},#{createTime},0,#{pCode},#{pTime},0)
+        insert into e_paper (p_id,p_name,u_id,create_time,is_delete,p_code,p_time,p_status) values (#{pId},#{pName},#{uId},#{createTime},0,#{pCode},#{pTime},0)
     </insert>
 
 <!--    删除试卷-->
     <update id="delPaper" parameterType="Parper">
-        update e_parper set is_delete = 1 , create_time = #{createTime} where p_id = #{pId} and u_id = #{uId}
+        update e_paper set is_delete = 1 , create_time = #{createTime} where p_id = #{pId} and u_id = #{uId}
     </update>
 
 <!--    修改试卷名-->
     <update id="changePaper" parameterType="Parper">
-        update e_parper
+        update e_paper
         <set>
             <if test="pName != null and pName != ''">
                 p_name = #{pName},
@@ -33,12 +33,17 @@
 
 <!--    查看所有试卷-->
     <select id="queryAllParper" parameterType="string" resultType="Parper">
-        select * from e_parper where u_id = #{value} and is_delete = 0
+        select * from e_paper where u_id = #{value} and is_delete = 0
     </select>
 
 <!--    更改试卷状态-->
     <update id="changePaperStatus" parameterType="Parper">
-        update e_parper set p_status = #{pStatus} where p_id = #{pId}
+        update e_paper set p_status = #{pStatus} where p_id = #{pId}
     </update>
+
+<!--    通过ID获得试卷信息-->
+    <select id="queryPaperById" parameterType="string" resultType="Parper">
+        select * from e_paper where p_id = #{value}
+    </select>
 
 </mapper>

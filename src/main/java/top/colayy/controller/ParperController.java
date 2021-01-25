@@ -63,4 +63,12 @@ public class ParperController {
         return mark;
     }
 
+    //通过ID获得试卷信息
+    @RequestMapping("/showPaperById")
+    @ResponseBody
+    public Parper showPaperById(@RequestBody Parper parper){
+        Parper parper1 = parperServiceImpl.queryPaperById(parper.getpId());
+        return parper1;
+    }
+
 }

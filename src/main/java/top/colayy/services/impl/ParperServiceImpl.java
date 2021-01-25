@@ -93,4 +93,12 @@ public class ParperServiceImpl implements ParperService {
         }
         return false;
     }
+
+
+    //通过ID获得试卷信息
+    @Override
+    public Parper queryPaperById(String pId) {
+        Parper parper = parperDao.queryPaperById(pId);
+        return parper;
+    }
 }

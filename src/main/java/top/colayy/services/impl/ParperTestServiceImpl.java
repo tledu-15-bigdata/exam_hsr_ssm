@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import top.colayy.dao.ClassifyDao;
 import top.colayy.dao.ParperTestDao;
 import top.colayy.dao.TestDao;
+import top.colayy.pojo.Parper;
 import top.colayy.pojo.ParperTest;
 import top.colayy.pojo.Test;
 import top.colayy.services.ParperTestService;
@@ -68,5 +69,13 @@ public class ParperTestServiceImpl implements ParperTestService {
         return tests;
     }
 
-
+    //显示可添加试题
+    @Override
+    public List<Test> queryAddibleTest(String pId,String uId) {
+        Parper parper = new Parper();
+        parper.setpId(pId);
+        parper.setuId(uId);
+        List<Test> tests = parperTestDao.queryAddibleTest(parper);
+        return tests;
+    }
 }

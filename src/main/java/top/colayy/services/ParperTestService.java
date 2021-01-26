@@ -16,4 +16,7 @@ public interface ParperTestService {
     //试卷试题展示
     public List<Test> queryAllParperTest(String pId);
 
+    //显示可添加试题
+    public List<Test> queryAddibleTest(String pId,String uId);
+
 }

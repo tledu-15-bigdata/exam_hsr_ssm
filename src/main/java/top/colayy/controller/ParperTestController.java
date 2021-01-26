@@ -31,7 +31,7 @@ public class ParperTestController {
     }
 
     //删除试卷试题
-    @RequestMapping("/delPapaerTest")
+    @RequestMapping("/delPaperTest")
     @ResponseBody
     public boolean delPapaerTest(@RequestBody ParperTest parperTest){
         boolean mark = parperTestServiceImpl.delPapaerTest(parperTest);
@@ -45,6 +45,16 @@ public class ParperTestController {
     public PageUtils showPaperTest(@RequestBody Map<String,Object> params)throws Exception{
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()),Integer.parseInt(params.get("pageNumber").toString()));
         List<Test> parperTest = parperTestServiceImpl.queryAllParperTest(params.get("pId").toString());
+        PageInfo<Test> pageInfo = new PageInfo<Test>(parperTest);
+        return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
+    }
+
+    //显示可添加试题
+    @RequestMapping("/showAddibleTest")
+    @ResponseBody
+    public PageUtils showAddibleTest(@RequestBody Map<String,Object> params)throws Exception{
+        PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()),Integer.parseInt(params.get("pageNumber").toString()));
+        List<Test> parperTest = parperTestServiceImpl.queryAddibleTest(params.get("pId").toString(),params.get("uId").toString());
         PageInfo<Test> pageInfo = new PageInfo<Test>(parperTest);
         return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }

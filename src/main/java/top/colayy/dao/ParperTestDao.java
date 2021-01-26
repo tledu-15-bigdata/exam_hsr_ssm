@@ -1,6 +1,7 @@
 package top.colayy.dao;
 
 import top.colayy.pojo.Classify;
+import top.colayy.pojo.Parper;
 import top.colayy.pojo.ParperTest;
 import top.colayy.pojo.Test;
 
@@ -19,6 +20,9 @@ public interface ParperTestDao {
 
     // 试题模块 - 显示试题 - 通过试题ID查询
     public Test showTestByTId(String tId);
+
+    //显示可添加试题
+    public List<Test> queryAddibleTest(Parper paper);
 
 
 }

@@ -14,11 +14,20 @@ public class Test {
     private String oB;
     private String oC;
     private String oD;
+    private String pId;
 
     public Test() {
     }
 
-    public Test(String tId, String tTopic, String tAnswer, int tScore, int tType, String cId, String cName, String createTime, String uId, String oA, String oB, String oC, String oD) {
+    public Test(String uId,String cId,String tTopic,int tType,String pId) {
+        this.tTopic = tTopic;
+        this.tType = tType;
+        this.cId = cId;
+        this.uId = uId;
+        this.pId = pId;
+    }
+
+    public Test(String tId, String tTopic, String tAnswer, int tScore, int tType, String cId, String cName, String createTime, String uId, String oA, String oB, String oC, String oD, String pId) {
         this.tId = tId;
         this.tTopic = tTopic;
         this.tAnswer = tAnswer;
@@ -32,6 +41,7 @@ public class Test {
         this.oB = oB;
         this.oC = oC;
         this.oD = oD;
+        this.pId = pId;
     }
 
     @Override
@@ -50,6 +60,7 @@ public class Test {
                 ", oB='" + oB + '\'' +
                 ", oC='" + oC + '\'' +
                 ", oD='" + oD + '\'' +
+                ", pId='" + pId + '\'' +
                 '}';
     }
 
@@ -155,5 +166,13 @@ public class Test {
 
     public void setoD(String oD) {
         this.oD = oD;
+    }
+
+    public String getpId() {
+        return pId;
+    }
+
+    public void setpId(String pId) {
+        this.pId = pId;
     }
 }

@@ -78,7 +78,8 @@ public class TestServiceImpl implements TestService {
     // 试卷模块 - 显示试题
     // - 通过分类ID查询或是部分题目模糊查询
     @Override
-    public List<Test> queryTestByCon(Test test) {
+    public List<Test> queryTestByCon(String uId,String cId,String tTopic,int tType,String pId) {
+        Test test = new Test(uId,cId,tTopic,tType,pId);
         List<Test> testList = testDao.showTestByCon(test);
         return queryReplenish(testList);
     }

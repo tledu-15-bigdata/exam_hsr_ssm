@@ -19,4 +19,7 @@ public interface ParperTestService {
     //显示可添加试题
     public List<Test> queryAddibleTest(String pId,String uId);
 
+    // 补全试卷信息 -- 添加cName,选项内容
+    public List<Test> queryReplenish(List<Test> testList);
+
 }

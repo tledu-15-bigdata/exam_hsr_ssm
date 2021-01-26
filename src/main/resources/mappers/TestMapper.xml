@@ -60,18 +60,20 @@
 <!--        and u_id = #{uID} and is_delete = 0;-->
 <!--    </select>-->
     <select id="showTestByCon" resultType="Test" parameterType="Test">
-        select * from e_test
+        select * from (select * from (select * from e_test where u_id = #{uId}) test where not exists (select * from (select * from e_paper_test where p_id = #{pId} and is_delete = 0) p where test.t_id = p.t_id ))
         <where>
-            <if test="tId != '' and tId != null">
-                and t_id = #{tId}
+            <if test="cId != '' and cId != null and cId!='null'">
+                and c_id = #{cId}
             </if>
             <if test="tTopic != '' and tTopic != null">
                 and t_topic like concat("%",#{tTopic},"%")
             </if>
-            <if test="tType != '' and tType != null">
+            <if test="tType != '' and tType != null and tType != -1">
                 and t_type = #{tType}
             </if>
-            and u_id = #{uID} and is_delete = 0
+            <if test="uId != '' and uId != null">
+                and u_id = #{uId} and is_delete = 0
+            </if>
         </where>
     </select>
 </mapper>

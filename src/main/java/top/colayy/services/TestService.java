@@ -22,7 +22,7 @@ public interface TestService {
     Test queryTestByTId(Test test);
 
     // 试卷模块 - 显示试题 - 通过分类ID查询或是部分题目模糊查询
-    List<Test> queryTestByCon(Test test);
+    List<Test> queryTestByCon(String uId,String cId,String tTopic,int tType,String pId);
 
     // 补全试卷信息 -- 添加cName,选项内容
     List<Test> queryReplenish(List<Test> testList);

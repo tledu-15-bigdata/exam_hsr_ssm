@@ -76,6 +76,22 @@ public class ParperTestServiceImpl implements ParperTestService {
         parper.setpId(pId);
         parper.setuId(uId);
         List<Test> tests = parperTestDao.queryAddibleTest(parper);
-        return tests;
+        return queryReplenish(tests);
+    }
+
+    // 补全试卷信息 -- 添加cName,选项内容
+    @Override
+    public List<Test> queryReplenish(List<Test> testList) {
+        for (Test test1 : testList) {
+            test1.setcName(classifyDao.showClassifyById(test1.getcId()).getcName());
+            if (test1.gettType() == 0) {
+                Test testOption = testDao.showOption(test1.gettId());
+                test1.setoA(testOption.getoA());
+                test1.setoB(testOption.getoB());
+                test1.setoC(testOption.getoC());
+                test1.setoD(testOption.getoD());
+            }
+        }
+        return testList;
     }
 }

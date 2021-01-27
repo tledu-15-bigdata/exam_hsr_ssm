@@ -40,7 +40,7 @@ public class ParperTestServiceImpl implements ParperTestService {
     @Override
     public boolean delPapaerTest(ParperTest parperTest) {
         int i = parperTestDao.delPapaerTest(parperTest);
-        if (i==1){
+        if (i!=0){
             return true;
         }
         return false;

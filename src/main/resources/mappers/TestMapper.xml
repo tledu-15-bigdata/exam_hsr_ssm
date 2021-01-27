@@ -34,7 +34,7 @@
 
     <!--    // 试题模块 - 显示试题 - 通过试题ID查询-->
     <select id="showTestByTId" resultType="Test" parameterType="Test">
-        select * from e_test where u_id = #{uId} and t_id = #{tId} and is_delete = 0
+        select * from e_test where t_id = #{tId} and is_delete = 0
     </select>
 
 <!--    // 试卷模块 - 显示试题 - 查询单选题的选项-->

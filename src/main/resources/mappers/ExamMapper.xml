@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.colayy.dao.ExamDao">
+
+    <select id="verifyRecord" parameterType="record" resultType="record">
+        select * from e_record where r_phone = #{rPhone} and p_id = #{pId} and is_delete = 0
+    </select>
+
+
+    <insert id="saveRecord" parameterType="record">
+        insert into e_record values(#{rId},#{rName},#{rPhone},#{rScore},#{pId},#{createTime},0)
+    </insert>
+
+    <select id="getPaperIdByCode" parameterType="string" resultType="paper">
+        select * from e_paper where p_code = #{value} and is_delete = 0
+    </select>
+
+    <select id="getTIdList" parameterType="string" resultType="string">
+        select t_id from e_paper_test where p_id = #{value} and is_delete = 0 order by tType asc
+    </select>
+
+    <insert id="saveAnswerMsg" parameterType="answerMsg">
+        insert into e_answer_msg values
+        <foreach collection="list" item="answerMsg" separator=",">
+            (#{aId},#{rId},#{pId},#{tId},#{aAnswer},#{createTime},0)
+        </foreach>
+    </insert>
+
+
+
+</mapper>

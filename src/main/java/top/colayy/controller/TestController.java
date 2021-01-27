@@ -53,7 +53,6 @@ public class TestController {
     @RequestMapping("/showTestById")
     @ResponseBody
     public Test showTestByTId(@RequestBody Test test){
-        System.out.println(test);
         return testServiceImpl.queryTestByTId(test);
     }
 

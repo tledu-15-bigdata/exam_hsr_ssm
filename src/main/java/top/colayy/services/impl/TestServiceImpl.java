@@ -61,8 +61,6 @@ public class TestServiceImpl implements TestService {
     @Override
     public Test queryTestByTId(Test test) {
         Test queryTest = testDao.showTestByTId(test);
-        System.out.println("queryTest" + queryTest);
-        System.out.println("----" + classifyDao.showClassifyById(queryTest.getcId()).getcName());
         queryTest.setcName(classifyDao.showClassifyById(queryTest.getcId()).getcName());
         if (queryTest.gettType() == 0) {
             Test testOption = testDao.showOption(queryTest.gettId());

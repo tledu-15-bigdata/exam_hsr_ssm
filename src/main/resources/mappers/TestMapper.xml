@@ -34,7 +34,7 @@
 
     <!--    // 试题模块 - 显示试题 - 通过试题ID查询-->
     <select id="showTestByTId" resultType="Test" parameterType="Test">
-        select * from e_test where u_id = #{uId} and t_id = #{tId} and is_delete = 0
+        select * from e_test where t_id = #{tId} and is_delete = 0
     </select>
 
 <!--    // 试卷模块 - 显示试题 - 查询单选题的选项-->
@@ -60,20 +60,23 @@
 <!--        and u_id = #{uID} and is_delete = 0;-->
 <!--    </select>-->
     <select id="showTestByCon" resultType="Test" parameterType="Test">
-        select * from (select * from (select * from e_test where u_id = #{uId}) test where not exists (select * from (select * from e_paper_test where p_id = #{pId} and is_delete = 0) p where test.t_id = p.t_id ))
+        select * from (select * from (select * from e_test where u_id = #{uId} and is_delete = 0) test where not exists (select * from (select * from e_paper_test where p_id = #{pId} and is_delete = 0) p where test.t_id = p.t_id)) a
+<!--         where  a.t_topic like concat("%",#{tTopic},"%") and a.t_type = #{tType} and a.c_id = #{cId}-->
+<!--         and a.u_id = #{uId} and a.is_delete = 0 -->
         <where>
-            <if test="cId != '' and cId != null and cId!='null'">
-                and c_id = #{cId}
+            <if test="cId != 'all'">
+                and a.c_id = #{cId}
             </if>
-            <if test="tTopic != '' and tTopic != null">
-                and t_topic like concat("%",#{tTopic},"%")
+            <if test="tTopic != '' ">
+                and a.t_topic like concat("%",#{tTopic},"%")
             </if>
-            <if test="tType != '' and tType != null and tType != -1">
-                and t_type = #{tType}
+            <if test="tType != 2">
+                and a.t_type = #{tType}
             </if>
-            <if test="uId != '' and uId != null">
-                and u_id = #{uId} and is_delete = 0
-            </if>
+<!--            <if test="uId != '' and uId != null">select * from (select * from e_test where u_id = "2f8fe668-c4a9-4837-95fe-9a929416e0e6") test where not exists (select * from (select * from e_paper_test where p_id = "1273f0b3-64c1-4665-8693-beffb1086c81" and is_delete = 0) p where test.t_id = p.t_id )-->
+<!--                and a.u_id = #{uId} and a.is_delete = 0-->
+<!--            </if>-->
+                and a.is_delete = 0
         </where>
     </select>
 </mapper>

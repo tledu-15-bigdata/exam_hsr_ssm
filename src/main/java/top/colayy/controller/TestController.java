@@ -62,8 +62,9 @@ public class TestController {
     @RequestMapping("/showTestByCon")
     @ResponseBody
     public PageUtils showTestByCon(@RequestBody Map<String,Object> params)throws Exception{
+        System.out.println(params);
         PageHelper.offsetPage(Integer.parseInt(params.get("offset").toString()),Integer.parseInt(params.get("pageNumber").toString()));
-        List<Test> testList = testServiceImpl.queryTestByCon(params.get("uId").toString(),params.get("cId").toString(),params.get("tTopic").toString(), (Integer) params.get("tType"),params.get("pId").toString());
+        List<Test> testList = testServiceImpl.queryTestByCon(params.get("uId").toString(),params.get("cId").toString(),params.get("tTopic").toString(), Integer.parseInt(params.get("tType").toString()),params.get("pId").toString());
         PageInfo<Test> pageInfo = new PageInfo<>(testList);
         return new PageUtils(pageInfo.getList(),new Long(pageInfo.getTotal()).intValue());
     }

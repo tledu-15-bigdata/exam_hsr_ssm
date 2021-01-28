@@ -29,7 +29,7 @@
 
 <!--    查询可添加试题-->
     <select id="queryAddibleTest" parameterType="Parper" resultType="Test">
-        select * from (select * from e_test where u_id = #{uId}) test where not exists (select * from (select * from e_paper_test where p_id = #{pId} and is_delete = 0) p where test.t_id = p.t_id )
+        select * from (select * from e_test where u_id = #{uId} and is_delete = 0) test where not exists (select * from (select * from e_paper_test where p_id = #{pId} and is_delete = 0) p where test.t_id = p.t_id )
     </select>
 
 </mapper>

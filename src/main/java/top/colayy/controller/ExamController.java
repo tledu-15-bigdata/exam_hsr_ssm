@@ -28,12 +28,18 @@ public class ExamController {
     public Record addRecord(@RequestBody Record record){
         Parper paperIdByCode = examServiceImpl.getPaperIdByCode(record.getpCode());
         record.setpId(paperIdByCode.getpId());
-
-        if(examServiceImpl.verifyRecord(record) != null) return null;
-        else{
+        Record verifyRecord = examServiceImpl.verifyRecord(record);
+        if(verifyRecord != null){
+            System.out.println(verifyRecord);
+            if(verifyRecord.getrScore() != -1) return new Record();
+            else {
+                verifyRecord.setpCode(record.getpCode());
+                return verifyRecord;
+            }
+        }else {
             record.setrId(UUID.randomUUID().toString());
             record.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            if(examServiceImpl.saveRecord(record) == 0) return null;
+            if(examServiceImpl.saveRecord(record) == 0) return new Record();
             else return record;
         }
     }

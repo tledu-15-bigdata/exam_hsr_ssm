@@ -8,14 +8,14 @@ public class Record {
     private String rName;
     private String rPhone;
     private String pCode;
-    private String rScore;
+    private int rScore;
     private String pId;
     private String createTime;
 
     public Record() {
     }
 
-    public Record(String rId, String rName, String rPhone, String rScore, String pId, String createTime) {
+    public Record(String rId, String rName, String rPhone, int rScore, String pId, String createTime) {
         this.rId = rId;
         this.rName = rName;
         this.rPhone = rPhone;
@@ -69,11 +69,11 @@ public class Record {
         this.rPhone = rPhone;
     }
 
-    public String getrScore() {
+    public int getrScore() {
         return rScore;
     }
 
-    public void setrScore(String rScore) {
+    public void setrScore(int rScore) {
         this.rScore = rScore;
     }
 

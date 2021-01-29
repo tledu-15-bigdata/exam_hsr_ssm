@@ -28,9 +28,7 @@ public class MenuServiceImpl implements MenuService {
     //修改菜单内容
     public boolean changeMenuCon(Menu menu) {
         //生成时间
-        Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        menu.setCreateTime(format);
+        menu.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         int i = menuDao.changeMenuCon(menu);
         if (i==1){
             return true;
@@ -42,9 +40,7 @@ public class MenuServiceImpl implements MenuService {
 //    菜单禁用
     public boolean changeMenuStatus(Menu menu) {
         //生成时间
-        Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        menu.setCreateTime(format);
+        menu.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         int i = menuDao.changeMenuStatus(menu);
         if (i==1){
             return true;

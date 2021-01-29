@@ -6,7 +6,7 @@
 
 <!--    查看菜单-->
     <select id="queryShowMenu" parameterType="Menu" resultType="Menu">
-        select * from e_menu where is_root = #{isRoot} order by m_order asc
+        select * from e_menu where is_root = #{isRoot} and is_delete = 0 order by m_order asc
     </select>
 
 <!--    修改菜单内容-->

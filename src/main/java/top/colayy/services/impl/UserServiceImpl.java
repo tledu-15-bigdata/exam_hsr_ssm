@@ -75,9 +75,7 @@ public class UserServiceImpl implements UserService {
     //重置密码
     public boolean resetPwd(User user) {
         //生成时间
-        Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        user.setCreateTime(format);
+        user.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         //重载密码
         user.setuPwd("admin123");
         int i = userDao.resetPwd(user);
@@ -110,9 +108,10 @@ public class UserServiceImpl implements UserService {
     //禁用启用用户
     public boolean changeStatus(User user) {
         //生成时间
-        Date date = new Date();
-        String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        user.setCreateTime(format);
+        user.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        User user1 = userDao.queryUserById(user);
+        if (user1.getIsDisabled()==1) user.setIsDisabled(0);
+        else if (user1.getIsDisabled()==0) user.setIsDisabled(1);
         int i = userDao.changeStatus(user);
         if (i==1){
             return true;

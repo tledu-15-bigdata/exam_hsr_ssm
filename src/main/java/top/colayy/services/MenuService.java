@@ -10,6 +10,9 @@ public interface MenuService {
     //查看菜单
     public List<Menu> queryShowMenu(Menu menu);
 
+    //查看所用菜单(表格)
+    public List<Menu> queryMenuList();
+
     //修改菜单内容
     public boolean changeMenuCon(Menu menu);
 

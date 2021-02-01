@@ -9,6 +9,11 @@
         select * from e_menu where is_root = #{isRoot} and is_delete = 0 order by m_order asc
     </select>
 
+<!--    查看所有菜单(表格)-->
+    <select id="queryMenuList" resultType="Menu">
+        select * from e_menu where is_root = 0 order by m_order asc
+    </select>
+
 <!--    修改菜单内容-->
     <update id="changeMenuCon" parameterType="Menu">
         update e_menu set m_con = #{mCon} , create_time = #{createTime} where m_id = #{mId}

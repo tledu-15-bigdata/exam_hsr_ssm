@@ -104,6 +104,12 @@ public class UserServiceImpl implements UserService {
         return users;
     }
 
+    //查看所用用户(表格)
+    @Override
+    public List<User> queryUserList() {
+        return userDao.queryUsers();
+    }
+
     @Override
     //禁用启用用户
     public boolean changeStatus(User user) {

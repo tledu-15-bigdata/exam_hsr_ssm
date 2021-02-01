@@ -24,6 +24,9 @@ public interface UserService {
     //查看所用用户
     public List<User> queryUsers(User user);
 
+    //查看所用用户(表格)
+    public List<User> queryUserList();
+
     //禁用启用用户
     public boolean changeStatus(User user);
 

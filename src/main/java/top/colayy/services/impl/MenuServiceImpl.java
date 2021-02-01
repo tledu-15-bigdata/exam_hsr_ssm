@@ -24,6 +24,12 @@ public class MenuServiceImpl implements MenuService {
         return menus;
     }
 
+    //查看所用菜单(表格)
+    @Override
+    public List<Menu> queryMenuList() {
+        return menuDao.queryMenuList();
+    }
+
     @Override
     //修改菜单内容
     public boolean changeMenuCon(Menu menu) {

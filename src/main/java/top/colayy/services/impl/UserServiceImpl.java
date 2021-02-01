@@ -124,4 +124,15 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+//    修改用户头像
+    @Override
+    public boolean changeUserPhoto(User user) {
+        user.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        int i = userDao.changeUserPhoto(user);
+        if (i==1){
+            return true;
+        }
+        return false;
+    }
 }

@@ -87,4 +87,12 @@ public class UserController {
         boolean mark = userServiceImpl.changeStatus(user);
         return mark;
     }
+
+    //修改用户头像
+    @RequestMapping("/changeUserPhoto")
+    @ResponseBody
+    public boolean changeUserPhoto(@RequestBody User user){
+        boolean mark = userServiceImpl.changeUserPhoto(user);
+        return mark;
+    }
 }

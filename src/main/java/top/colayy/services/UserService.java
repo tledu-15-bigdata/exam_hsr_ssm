@@ -31,6 +31,6 @@ public interface UserService {
     public boolean changeStatus(User user);
 
     //修改用户头像
-//    public boolean changeUserPhoto()
+    public boolean changeUserPhoto(User user);
 
 }

@@ -21,15 +21,15 @@ import java.util.*;
 @Controller
 public class ChangeUserPhoto {
 
-    @RequestMapping("/changeUserPhoto")
+    @RequestMapping("/upUserPhoto")
     @ResponseBody
     public Map<String,Object> uploadMethod(HttpServletRequest hsr)throws ServletException, IOException {
-        //执行成功与否的标签
-        boolean mark = false;
+        //上传的路径
+        String uPhoto = null;
 
         //上传文件环境准备
         //文件  传输到 服务端 ==》服务器存储文件的目录
-        String savePath = hsr.getServletContext().getRealPath("/uploadFile");
+        String savePath = hsr.getServletContext().getRealPath("/img");
         System.out.println(savePath);
 
         //临时目录/缓存目录
@@ -108,6 +108,7 @@ public class ChangeUserPhoto {
                     //-----这里是存放的路径----
                     String realEndSavePath = realSavePath.substring(realSavePath.lastIndexOf("\\")+1);
 //                    System.out.println(realEndSavePath+"\\"+saveFileName);
+                    uPhoto = realEndSavePath+"\\"+saveFileName;
 
 
 
@@ -128,7 +129,7 @@ public class ChangeUserPhoto {
 
 //        返回结果：
         Map<String,Object> param=new HashMap<String,Object>();
-        param.put("mark",mark);
+        param.put("uPhoto",uPhoto);
         return param;
     }
 

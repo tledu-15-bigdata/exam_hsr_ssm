@@ -62,4 +62,9 @@
         update e_user set is_disabled = #{isDisabled} , create_time = #{createTime} where u_id = #{uId}
     </update>
 
+<!--    修改用户头像-->
+    <update id="changeUserPhoto" parameterType="User">
+        update e_user set uPhoto = #{uPhoto} , create_time = #{createTime} where u_id = #{uId}
+    </update>
+
 </mapper>

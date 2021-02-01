@@ -30,4 +30,7 @@ public interface UserDao {
     //禁用启用用户
     public int changeStatus(User user);
 
+    //修改用户头像
+    public int changeUserPhoto(User user);
+
 }

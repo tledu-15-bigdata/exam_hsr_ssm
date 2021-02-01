@@ -41,6 +41,9 @@ public class MenuServiceImpl implements MenuService {
     public boolean changeMenuStatus(Menu menu) {
         //生成时间
         menu.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        Menu menu1 = menuDao.queryMenuById(menu.getmId());
+        if (menu1.getIsDelete()==1) menu.setIsDelete(0);
+        if (menu1.getIsDelete()==0) menu.setIsDelete(1);
         int i = menuDao.changeMenuStatus(menu);
         if (i==1){
             return true;

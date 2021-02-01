@@ -13,6 +13,9 @@ public interface MenuDao {
     //修改菜单内容
     public int changeMenuCon(Menu menu);
 
+    //通过ID获得菜单
+    public Menu queryMenuById(String mId);
+
     //菜单禁用
     public int changeMenuStatus(Menu menu);
 

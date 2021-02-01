@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="exam_hsr_ssm:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/exam_hsr_ssm</output-path>
+    <root id="archive" name="exam_hsr_ssm_war.war">
+      <element id="artifact" artifact-name="exam_hsr_ssm:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    </root>
+  </artifact>
+</component>

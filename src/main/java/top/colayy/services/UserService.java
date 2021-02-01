@@ -27,4 +27,7 @@ public interface UserService {
     //禁用启用用户
     public boolean changeStatus(User user);
 
+    //修改用户头像
+//    public boolean changeUserPhoto()
+
 }

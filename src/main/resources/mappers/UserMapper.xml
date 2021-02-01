@@ -54,7 +54,7 @@
 
 <!--    查看所用用户-->
     <select id="queryUsers" resultType="User">
-        select * from e_user where is_delete = 0
+        select * from e_user where is_delete = 0 and is_root = 0
     </select>
 
 <!--    禁用启用用户-->
